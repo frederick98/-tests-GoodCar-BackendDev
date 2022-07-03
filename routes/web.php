@@ -23,6 +23,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Data Kecamatan
 Route::get('/data-kecamatan', [App\Http\Controllers\DataKecamatanController::class, 'index'])->name('dataKecamatan.list');
+Route::get('/data-kecamatan/edit/{id}', [App\Http\Controllers\DataKecamatanController::class, 'edit'])->name('dataKecamatan.edit');
+Route::post('/data-kecamatan/edit/{id}', [App\Http\Controllers\DataKecamatanController::class, 'postEdit'])->name('dataKecamatan.postEdit');
 Route::get('/data-kecamatan/export', [App\Http\Controllers\DataKecamatanController::class, 'export'])->name('dataKecamatan.export');
 Route::post('/data-kecamatan', [App\Http\Controllers\DataKecamatanController::class, 'import'])->name('dataKecamatan.import');
 

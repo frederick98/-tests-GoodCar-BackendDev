@@ -13,7 +13,7 @@ class DataKecamatanRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,11 @@ class DataKecamatanRequest extends FormRequest
     {
         return [
             //
+            'provinsi' => 'required',
+            'kota' => 'required',
+            'kelurahan' => 'required',
+            'nama' => 'required',
+            'status' => 'required',
         ];
     }
 }

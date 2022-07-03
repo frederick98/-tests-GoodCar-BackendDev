@@ -25,60 +25,36 @@ class DataKecamatanController extends Controller
     }
     
     public function import(){
+        // save ile to storage
+        $fileName = time().'_'.request()->file->getClientOriginalName();
+        request()->file('file')->storeAs('reports', $fileName, 'public');
+
         Excel::import(new UsersImport, request()->file('file'));
         return redirect()->back()->with('status','Data Kecamatan Berhasil Diimport');
     }
-    
-    public function post(DataKecamatanRequest  $request){
-        $uuid = Uuid::uuid4();
-
-        // formatting status
-        $status = $request->status;
-        if(($request->status) == 1){
-            $published = Carbon::now();
-        }
-
-        $input = DataKecamatan::create([
-            'id'=>$uuid,
-            'name'=>$request->name,
-            'status'=>$request->status,
-            'created_time'=>Carbon::now(),
-            'created_by'=>Auth::user()->id,
-        ]);
-        return redirect()->route('dataKecamatan.list')->with('status', 'Kecamatan has been successfully created!'); 
-    }
 
     public function edit($id){
-        $category = DataKecamatan::find($id);
+        // item data kecamatan yang akan diedit
+        $data['first'] = Banner::where('id', $id)->firstOrFail();
 
-        // return response()->json(['data' => $category]);
         return view('admin.data-kecamatan.dataKecamatanEdit', $data);
     }
 
     public function postEdit(DataKecamatanRequest $request, $id) {
-        // ArticleCategory::updateOrCreate([
-        //     ['id' => $id],
-        //     ['name' => $request->name],
-        //     ['status' => $request->status],
-        // ]);
+        $uuid = Uuid::uuid4();
 
-        return response()->json(['success' => true]);
-        // item category yg akan diedit
-        // $data['first'] = ArticleCategory::select(
-        //         'm_category.id',
-        //         'm_category.name',
-        //         'm_category.status')
-        //     ->where('m_category.id', $id)
-        //     ->firstOrFail();
-
-        // return view('admin.news.category.categoryIndex', $data);
+        $input = DataKecamatan::create([
+            'id'=>$uuid,
+            'provinsi'=>$request->provinsi,
+            'kota'=>$request->kota,
+            'kelurahan'=>$request->kelurahan,
+            'nama'=>$request->nama,
+            'status'=>$request->status,
+            'updated_time'=>Carbon::now(),
+            'updated_time'=>Auth::user()->id,
+        ]);
+        return redirect()->route('dataKecamatan.list')->with('status', 'Data Kecamatan berhasil diperbarui!');
     }
-
-    // public function create() {
-    //     $data['category'] = ArticleCategory::select('id', 'name')->orderby('name')->get();
-    //     $data['topic'] = DB::table('m_topic')->select('id', 'name')->orderby('name')->get();
-    //     return view('admin.news.newsCreate', $data);
-    // }
 
     public function delete($id){
         $delete = DataKategory::find($id);

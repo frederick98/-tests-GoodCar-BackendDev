@@ -74,6 +74,7 @@
                                                 <th>Kota</th>
                                                 <th>Kelurahan</th>
                                                 <th>Kecamatan</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -83,6 +84,11 @@
                                                     <td>{{$items->kota}}</td>
                                                     <td>{{$items->kelurahan}}</td>
                                                     <td>{{$items->nama}}</td>
+                                                    <!-- Mohon maaf sementara saya buat seperti ini dahulu -->
+                                                    <td>
+                                                        <a type="button" href="{{url('achievement/edit', [$items->id])}}" class="btn btn-outline-light">Ubah</a>
+                                                        <a type="button" data-value="{{$items->id}}" data-toggle="modal" data-target="#confirmModal" href="#">Hapus</i></a>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -124,49 +130,32 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            @foreach($kecamatan as $items)
-                                <div class="col-md-4">
-                                    <!-- Widget: user widget style 2 -->
-                                    <div class="ui-state-default banner card card-widget widget-user">
-                                        <!-- Add the bg color to the header using any of the bg-* classes -->
-                                        <div class="widget-user-header"
-                                            style="background: url({{$items->image}}); background-size: 100%; ">
-                                        </div>
-                                        <div class="banner card-header">
-                                            <h1>{{$items->organization}}</h1>
-                                            <h1>{{$items->reward}}</h1>
-                                            <h2>{{$items->created_time->format('d F Y h:m')}}</h2>
-                                        </div>
-                                        <div class="banner card-body">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <div class="banner-s description-block">
-                                                        <p>Status</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <div class="banner-r description-block">
-                                                        <p>{{(($items->status) == 0)? 'Unpublished': 'Published'}}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card__overlay">
-                                            <div class="overlay__text">
-                                                <a type="button" data-value="{{$items->id}}" data-toggle="modal" data-target="#confirmModal" href="#"><i class="fas fa-trash-alt"></i></a>
-                                                <a type="button" href="{{url('achievement/edit', [$items->id])}}" class="btn btn-outline-light">Update</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Modal -->
+        <!-- Import Modal -->
+        <div class="modal fade" id="importModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Import CSV</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="import" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="input-group mb-3">
+                                <input type="file" name="file" class="form-control">
+                                <button class="btn btn-primary" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Modal -->
         <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -174,7 +163,7 @@
                         {{csrf_field()}}
                         {{method_field("DELETE")}}
                         <div class="modal-header" style="background-color: #dc3545; color: #ffffff;">
-                            <h5 class="modal-title modal-danger" id="exampleModalLabel">Delete Banner</h5>
+                            <h5 class="modal-title modal-danger" id="exampleModalLabel">Delete Kelurahan</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -194,19 +183,21 @@
 @endsection
 
 @section('third_party_scripts')
-<script>
-    $( function() {
-      $( "#sortable" ).sortable({
-          opacity:0.5
-      });
-    } );
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        $( function() {
+        $( "#sortable" ).sortable({
+            opacity:0.5
+        });
+        } );
+    </script>
 
-<script>
-    // deletion modals
-    $('#confirmModal').on('shown.bs.modal', function (e) {
-        var btn = $(e.relatedTarget);
-        $('#deleteForm').attr('action', '/data-kecamatan/delete/' + btn.data('value'));
-    });
-</script>
+    <script>
+
+        // deletion modals
+        $('#confirmModal').on('shown.bs.modal', function (e) {
+            var btn = $(e.relatedTarget);
+            $('#deleteForm').attr('action', '/data-kecamatan/delete/' + btn.data('value'));
+        });
+    </script>
 @endsection
