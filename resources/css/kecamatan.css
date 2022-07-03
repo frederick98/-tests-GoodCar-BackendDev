@@ -1,0 +1,324 @@
+html,
+body {
+    @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+}
+
+.banner.breadcrumb-item a {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 18px;
+    /* identical to box height */
+
+    color: #747474;
+}
+
+.header.container-fluid h1 {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+
+    color: #747474;
+}
+
+.header.container-fluid h1 span {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+
+    color: #747474;
+}
+
+.banner-sort {
+    background: #ffffff;
+    border: 1px solid #ced4da;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.banner.select2 {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    /* identical to box height, or 171% */
+
+    color: #6e6e6e;
+}
+
+.banner.card.card-widget.widget-user {
+    background: #ffffff;
+    /* stroke dl */
+
+    border: 1px solid #e0e0e0;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    position: relative;
+    transition: all 0.5s ease-in;
+}
+
+.card__image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.card__overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    border-radius: 10px;
+
+    visibility: none;
+    transition: 0.5s ease;
+    background-color: #599059;
+}
+
+.card:hover .card__overlay {
+    opacity: 0.95;
+    transform: matrix(1, 0, 0, 1, 0, 0);
+}
+
+.overlay__text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.overlay__text a i.fas.fa-trash-alt {
+    position: relative;
+    top: -120px;
+    left: 285px;
+    color: #fff;
+}
+
+@media (max-width: 1440px) {
+    .overlay__text a i.fas.fa-trash-alt {
+        position: relative;
+        top: -140px;
+        left: 190px;
+        color: #fff;
+    }
+}
+
+.banner.card-header h1 {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+
+    color: #307430;
+}
+
+.banner.card-header h2 {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+
+    /* abu dashboard */
+
+    color: #a5a5a5;
+}
+
+.banner.card-body {
+    padding: 0.5rem;
+}
+
+.banner-s.description-block p {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    /* identical to box height */
+
+    align-items: center;
+    text-align: left;
+
+    /* abu dashboard */
+
+    color: #a5a5a5;
+}
+
+.banner-r.description-block p {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    /* identical to box height */
+
+    align-items: center;
+    text-align: right;
+
+    color: #307430;
+}
+
+button.banner.btn-lg {
+    background: #307430;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    /* identical to box height, or 171% */
+
+    align-items: center;
+    text-align: center;
+
+    /* Global/09. White */
+
+    color: #ffffff;
+}
+
+a.banner.btn-lg {
+    background: #307430;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    /* identical to box height, or 171% */
+
+    align-items: center;
+    text-align: center;
+
+    /* Global/09. White */
+
+    color: #ffffff;
+}
+
+/* Create Banner */
+
+.banner-create.card-header h3 {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 32px;
+    /* identical to box height, or 178% */
+
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.5px;
+
+    /* SRR Primary/SRR Primary 50 */
+
+    color: #307430;
+}
+
+.banner-create.card-footer a {
+    background: #307430;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+
+    color: #ffffff;
+}
+
+.banner-create-image.form-group {
+    border: 1px dashed #1d461d;
+    border-radius: 10px;
+}
+
+.banner-card-content.card-default {
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.subUploads i {
+    color: #1d461d;
+    font-size: 48px;
+
+    position: absolute;
+    top: 130px;
+    left: 220px;
+}
+
+.subUploads span {
+    position: absolute;
+    top: 200px;
+    left: 115px;
+
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    /* identical to box height */
+
+    text-align: center;
+
+    /* SRR Primary/SRR Primary 70 */
+
+    color: #1d461d;
+}
+
+.banner-input label {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+
+    align-items: center;
+
+    /* warna text */
+
+    color: #575757;
+}
+
+.banner-input option {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+
+    align-items: center;
+
+    /* warna text */
+
+    color: #575757;
+}
